@@ -1,0 +1,48 @@
+
+.rec-dot{
+    background-color: #023e8a;
+}
+
+.rec-dot_active{
+    background-color: #023e8a;
+    box-shadow: #023e8a;
+}
+
+.rec-dot_active:focus , .rec-dot_active:hover{
+    background-color: #023e8a;
+    box-shadow: #023e8a;
+}
+
+.rec-dot:focus,
+.rec-dot:hover {
+    box-shadow: 0 0 1px 3px #023e8a ;
+}
+.rec-dot_active:focus,
+.rec-dot_active:hover {
+    background-color: #023e8a ;
+    box-shadow: 0 0 1px 3px #023e8a ;
+}
+
+.rec-arrow {
+    
+    background-color: var(--blue) !important;
+    transition: all 0.3s ease;
+    font-size: 1.1rem !important;
+    color: white !important;
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+    min-width: 1.7rem !important;
+    line-height: 1.7rem !important;
+    display:none;
+   
+}
+
+.rec-arrow:hover:not(:disabled) {
+    transform: scale(1.2) !important;
+}
+
+
+
+  button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
+    box-shadow: 0 0 1px 3px #023e8a ;
+  }
