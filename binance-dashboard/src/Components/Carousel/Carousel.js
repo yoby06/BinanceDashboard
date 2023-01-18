@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import Carousel from "react-elastic-carousel";
-import PriceData from "../Charts/PriceData";
 import { Box } from "@mui/system";
 import { ListItem, Typography } from "@mui/material";
-import { Height } from "@mui/icons-material";
 import './carousel.css'
 
 

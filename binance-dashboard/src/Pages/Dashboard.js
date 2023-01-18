@@ -1,11 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import PriceData from '../Components/Charts/PriceData'
 import Navbar from '../Components/Navbar/Navbar'
 import Sidebar from '../Components/Sidebar/Sidebar'
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import VolumeData from '../Components/Charts/VolumeData'
-import { Carousel } from '@mohammedsrehan/react-responsive-carousel'
 import MyCarousel from '../Components/Carousel/Carousel'
 
 const Dashboard = () => {

@@ -1,7 +1,6 @@
-import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
-import { Card, List, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 
 const PriceData = () => {
