@@ -1,16 +1,29 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, Menu, MenuItem, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import Sidebar from '../Components/Sidebar/Sidebar'
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import VolumeData from '../Components/Charts/VolumeData'
 import MyCarousel from '../Components/Carousel/Carousel'
+import VolumeDataWeekly from '../Components/Charts/VolumeDataWeekly';
 
 const Dashboard = () => {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
   return (
       <Box className='home' sx={{display:"flex"}}>    
-
-          <Sidebar/> 
+        <Box>
+             <Sidebar/> 
+        </Box>
 
             <Box className="homeContainer" sx={{flex:"1"}}> 
             
@@ -38,9 +51,47 @@ const Dashboard = () => {
                     <MyCarousel/>
                </Box>
 
+
+                        {/***************** VOLUME CHART ****************/}
                <Box className='VolumeChart' sx={{width:"40rem",marginLeft:"1rem",marginTop:"2rem"}}>
-                  <VolumeData/>
-               </Box>
+                  
+                        <Typography variant='h3' sx={{color:"#0077b6"}}> Volume Charts</Typography>
+                 
+                 
+                        <VolumeData/>
+          
+                 
+                 
+                 
+                  <Button
+                      id="demo-positioned-button"
+                      aria-controls={open ? 'demo-positioned-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                      sx={{color:"gray",border:"1px solid black",borderRadius:"30%"}}
+                    >
+                      More Chart 
+                    </Button>
+                    <Menu
+                      id="demo-positioned-menu"
+                      aria-labelledby="demo-positioned-button"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}>
+                      <MenuItem onClick={handleClose}>Daily Chart</MenuItem>
+                      <MenuItem onClick={handleClose}>Weekly Chart</MenuItem>
+                      <MenuItem onClick={handleClose}>Monthly Chart</MenuItem>
+                    </Menu>
+                </Box>
             <Box/>      
         
           </Box>

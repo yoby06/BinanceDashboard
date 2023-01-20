@@ -1,4 +1,3 @@
-import { LogoDev } from '@mui/icons-material'
 import { Avatar, Button,Typography } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import React from 'react'
@@ -21,12 +20,15 @@ const Sidebar = () => {
       <img className="logoimg" src="https://i.ibb.co/WgX6R2C/Logo.png" alt="Logo WALL@"/>
     </Box>
   </Link>
+  
     <Box>
+        <a href="https://www.linkedin.com/in/yi%C4%9Fit-o%C4%9Ful-bayarlar-0966691a3/" target="_blank" style={{textDecoration:"none"}}>
         <Button variant="contained" sx={{background:"#023e8a",marginLeft:"auto", marginRight:"auto"}}>
-        <Avatar alt="Avatar" src="https://cdn.dribbble.com/userupload/3719041/file/original-a961817c221095421997301577064fe4.png?compress=1&resize=1024x768" />
-
+            <Avatar alt="Avatar" src="https://cdn.dribbble.com/users/515705/screenshots/9818728/media/4a706681babc1cf92c04487bcdfbfdde.jpg" />
             <Box sx={{color:"#F2DEBA",marginLeft:"1rem"}}> Yigit Ogul Bayarlar</Box>
-     </Button>
+        </Button>
+        </a>
+
     </Box>
     
     <Box sx={{paddingBottom:"10px",justifyContent:"left",display:"flex",flexDirection:"column"}}>
@@ -67,9 +69,7 @@ const Sidebar = () => {
                     From only 8.99$
                 </Typography>
 
-           
                    <Button variant="contained" sx={{background:"#023e8a",marginTop:"1.5rem"}}>Upgrade To Pro</Button>
-      
                
                 
               </Box>   

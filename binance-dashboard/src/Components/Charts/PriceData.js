@@ -18,8 +18,7 @@ const PriceData = () => {
   }
 
 
-  const cartTypography = {fontSize:"16px",marginLeft:"0.2rem",fontFamily: "Oswald, sans-serif"
-}
+  const cartTypography = {fontSize:"16px",marginLeft:"0.2rem",fontFamily: "Oswald, sans-serif"}
 
   const cartPrice = { fontSize:"14px",marginLeft:"auto",paddingRight:"0.5rem",fontFamily: "Oswald, sans-serif" }
 

@@ -13,6 +13,8 @@ export var volumeDataNew = [];
 export const nameArray = [];
 
 
+
+
 export const options = {
   chart: {
     title: "Daily volume chart of your coin",
@@ -26,11 +28,11 @@ export const options = {
 function VolumeDataWeekly() {
   const [dataX, setDataX] = useState([
     ["Daily Intervals", " "],
-    ["1", 0],
-    ["6", 0],
-    ["12", 0],
-    ["18", 0],
-    ["24", 0],
+    ["Monday", 0],
+    ["Tuesday", 0],
+    ["wednesday", 0],
+    ["Thursday", 0],
+    ["Friday", 0],
   ]);
   const [state, setState] = useState(false);
 
@@ -46,18 +48,18 @@ function VolumeDataWeekly() {
   async function loadChartData(apijson,name) {
     setDataX([
         ["Daily Intervals", name],
-        ["1", parseInt(apijson[0][5])],
-        ["6", parseInt(apijson[1][5])],
-        ["12",parseInt(apijson[2][5]) ],
-        ["18", parseInt(apijson[3][5])],
-        ["24", parseInt(apijson[4][5])],
+        ["Monday", parseInt(apijson[0][5])],
+        ["Tuesday", parseInt(apijson[1][5])],
+        ["wednesday",parseInt(apijson[2][5]) ],
+        ["Thursday", parseInt(apijson[3][5])],
+        ["Friday", parseInt(apijson[4][5])],
       ])
     setState(true);
 
   }
   async function loadChart(name) {
     const api = await fetch(
-      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1d&limit=7`
+      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1d&limit=5`
     );
     let apijson = await api.json();
     console.log(apijson)
