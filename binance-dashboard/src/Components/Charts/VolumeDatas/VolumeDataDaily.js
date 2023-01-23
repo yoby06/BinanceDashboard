@@ -13,8 +13,6 @@ export var volumeDataNew = [];
 export const nameArray = [];
 
 
-
-
 export const options = {
   chart: {
     title: "Daily volume chart of your coin",
@@ -25,14 +23,14 @@ export const options = {
 
 //  *************** Chart Data End  ***************
 
-function VolumeDataWeekly() {
+function VolumeDataDaily() {
   const [dataX, setDataX] = useState([
-    ["Daily Intervals", " "],
-    ["Monday", 0],
-    ["Tuesday", 0],
-    ["wednesday", 0],
-    ["Thursday", 0],
-    ["Friday", 0],
+    ["Hour Intervals", " "],
+    ["1", 0],
+    ["6", 0],
+    ["12", 0],
+    ["18", 0],
+    ["24", 0],
   ]);
   const [state, setState] = useState(false);
 
@@ -47,19 +45,19 @@ function VolumeDataWeekly() {
 
   async function loadChartData(apijson,name) {
     setDataX([
-        ["Daily Intervals", name],
-        ["Monday", parseInt(apijson[0][5])],
-        ["Tuesday", parseInt(apijson[1][5])],
-        ["wednesday",parseInt(apijson[2][5]) ],
-        ["Thursday", parseInt(apijson[3][5])],
-        ["Friday", parseInt(apijson[4][5])],
+        ["Hour Intervals", name],
+        ["1", parseInt(apijson[0][5])],
+        ["6", parseInt(apijson[1][5])],
+        ["12",parseInt(apijson[2][5]) ],
+        ["18", parseInt(apijson[3][5])],
+        ["24", parseInt(apijson[4][5])],
       ])
     setState(true);
 
   }
   async function loadChart(name) {
     const api = await fetch(
-      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1d&limit=5`
+      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1d&limit=6`
     );
     let apijson = await api.json();
     console.log(apijson)
@@ -114,20 +112,9 @@ function VolumeDataWeekly() {
 
   return (
     <>
-        
 
-      <Chart
-        className="Chart"
-        chartType="Line"
-        width="100%"
-        height="400px"
-        data={dataX}
-        options={options}
-      />
-        
-      {/********** CHART END **********/}
 
-      <Button
+<Button
         id="demo-positioned-button"
         aria-controls={open ? "demo-positioned-menu" : undefined}
         aria-haspopup="true"
@@ -166,9 +153,23 @@ function VolumeDataWeekly() {
           );
         })}
       </Menu>
+        
+
+      <Chart
+        className="Chart"
+        chartType="Line"
+        width="100%"
+        height="400px"
+        data={dataX}
+        options={options}
+      />
+        
+      {/********** CHART END **********/}
+
+    
 
     </>
   );
 }
 
-export default VolumeDataWeekly;
+export default VolumeDataDaily;

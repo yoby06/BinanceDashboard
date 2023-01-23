@@ -1,15 +1,18 @@
-import { Box, Button, Menu, MenuItem, Typography } from '@mui/material'
+import { Box, Button, Grid, Menu, MenuItem, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import Sidebar from '../Components/Sidebar/Sidebar'
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import VolumeData from '../Components/Charts/VolumeData'
+import VolumeData from '../Components/Charts/VolumeDatas/VolumeDataDaily'
 import MyCarousel from '../Components/Carousel/Carousel'
-import VolumeDataWeekly from '../Components/Charts/VolumeDataWeekly';
-
+import VolumeDataWeekly from '../Components/Charts/VolumeDatas/VolumeDataWeekly';
+import ShowingVolume from '../Components/ShowingVolume/ShowingVolume';
+import PieChart from '../Components/Charts/PieChart';
 const Dashboard = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [show, setShow] = useState(false);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,6 +21,14 @@ const Dashboard = () => {
     setAnchorEl(null);
   };
 
+
+ function toggleShow() {
+    setShow(!show);
+  }
+
+
+
+  
 
   return (
       <Box className='home' sx={{display:"flex"}}>    
@@ -31,6 +42,9 @@ const Dashboard = () => {
                    <Navbar/>
                 </Box>        
 
+
+
+                
 
                 <Box className="PriceCartsHeader" sx={{
                           display:"flex",
@@ -50,48 +64,21 @@ const Dashboard = () => {
                 <Box  className="PriceCarts" sx={{display:"flex",}}>
                     <MyCarousel/>
                </Box>
+                
+              
+              <Box sx={{ flexGrow: 0 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={8}>
+                    <Paper sx={{marginLeft:"1rem",}}> <ShowingVolume/></Paper>
+                  </Grid>
 
+                  <Grid item xs={4}>
+                    <Paper sx={{marginLeft:"1rem"}}> <PieChart/> </Paper>
+                  </Grid>    
+                </Grid>
+              </Box>
 
-                        {/***************** VOLUME CHART ****************/}
-               <Box className='VolumeChart' sx={{width:"40rem",marginLeft:"1rem",marginTop:"2rem"}}>
-                  
-                        <Typography variant='h3' sx={{color:"#0077b6"}}> Volume Charts</Typography>
-                 
-                 
-                        <VolumeData/>
-          
-                 
-                 
-                 
-                  <Button
-                      id="demo-positioned-button"
-                      aria-controls={open ? 'demo-positioned-menu' : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}
-                      sx={{color:"gray",border:"1px solid black",borderRadius:"30%"}}
-                    >
-                      More Chart 
-                    </Button>
-                    <Menu
-                      id="demo-positioned-menu"
-                      aria-labelledby="demo-positioned-button"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                      }}
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                      }}>
-                      <MenuItem onClick={handleClose}>Daily Chart</MenuItem>
-                      <MenuItem onClick={handleClose}>Weekly Chart</MenuItem>
-                      <MenuItem onClick={handleClose}>Monthly Chart</MenuItem>
-                    </Menu>
-                </Box>
+  
             <Box/>      
         
           </Box>
