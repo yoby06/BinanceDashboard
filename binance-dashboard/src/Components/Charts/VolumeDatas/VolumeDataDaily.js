@@ -15,8 +15,9 @@ export const nameArray = [];
 
 export const options = {
   chart: {
-    title: "Daily volume chart of your coin",
+    title: "Daily volume chart of your coin (The given data based on most recent date)",
     subtitle: "in United States (USD)",
+
   },
 };
 
