@@ -79,7 +79,7 @@ function VolumeDataDaily() {
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(null);  
   };
 
 
@@ -108,7 +108,6 @@ function VolumeDataDaily() {
     await setDataNameFunc(apijson)
    
   }
-
 
 
   return (
