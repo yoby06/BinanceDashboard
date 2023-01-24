@@ -15,7 +15,6 @@ const Typewritter = () => {
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
-        background:"white",
         color:"gray"
   }}>
       <Typewriter

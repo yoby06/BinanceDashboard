@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import "./VolumeData.css";
+import "./Price.css";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
@@ -12,9 +12,10 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export const nameArray = [];
 
+
 export const options = {
   chart: {
-    title: "Daily volume chart of your coin (The given data based on most recent date)",
+    title: "Daily price chart of your coin (The given data based on most recent date)",
     subtitle: "in United States (USD)",
 
   },
@@ -23,7 +24,7 @@ export const options = {
 
 //  *************** Chart Data End  ***************
 
-function VolumeDataDaily() {
+function PriceDataDaily() {
   const [dataX, setDataX] = useState([
     ["Hour Intervals", " "],
     ["1", 0],
@@ -46,11 +47,11 @@ function VolumeDataDaily() {
   async function loadChartData(apijson,name) {
     setDataX([
         ["Hour Intervals", name],
-        ["1", parseInt(apijson[0][5])],
-        ["6", parseInt(apijson[1][5])],
-        ["12",parseInt(apijson[2][5]) ],
-        ["18", parseInt(apijson[3][5])],
-        ["24", parseInt(apijson[4][5])],
+        ["1", parseInt(apijson[0][1])],
+        ["6", parseInt(apijson[1][1])],
+        ["12",parseInt(apijson[2][1]) ],
+        ["18", parseInt(apijson[3][1])],
+        ["24", parseInt(apijson[4][1])],
       ])
     setState(true);
 
@@ -119,7 +120,7 @@ function VolumeDataDaily() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{position:"absolute",top:"14.9rem",left:"34rem"}}
+        sx={{position:"absolute",top:"14.9rem",right:"30rem"}}
       >
         Coins <KeyboardArrowDownIcon fontSize="small" sx={{marginLeft:"3rem"}}/>
       </Button>
@@ -171,4 +172,4 @@ function VolumeDataDaily() {
   );
 }
 
-export default VolumeDataDaily;
+export default PriceDataDaily;

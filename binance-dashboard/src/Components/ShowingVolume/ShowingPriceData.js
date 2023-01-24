@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import VolumeDataWeekly from "../Charts/VolumeDatas/VolumeDataWeekly";
-import VolumeDataDaily from "../Charts/VolumeDatas/VolumeDataDaily";
+import PriceDataDaily from "../Charts/PriceDatas/PriceDataDaily";
+import PriceDataWeekly from "../Charts/PriceDatas/PriceDataWeekly";
 import { Box, Typography } from "@mui/material";
-import VolumeDataMonthly from "../Charts/VolumeDatas/VolumeDataMonthly";
 import TimelineIcon from '@mui/icons-material/Timeline';
+import PriceDataMonthly from "../Charts/PriceDatas/PriceDataMonthly";
 
-export default function ShowingVolume() {
-  const [selectedVolume, setSelectedVolume] = useState("Volume chart of your coin");
+
+export default function ShowingPrice() {
+  const [selectedVolume, setSelectedVolume] = useState("Price chart of your coin");
 
   const [defaultContentVisible,setDefaultContentVisible] = useState(true)
   const [weeklyContentVisible, setWeeklyContentVisible] = useState(false);
@@ -55,10 +56,12 @@ export default function ShowingVolume() {
           <option value="Monthly">Monthly</option>
         </select>
       </Box>
-      {defaultContentVisible && <VolumeDataDaily />}
-      {dailyContentVisible && <VolumeDataDaily />}
-      {weeklyContentVisible && <VolumeDataWeekly />}
-      {monthlyContentVisible && <VolumeDataMonthly />}
+      {defaultContentVisible && <PriceDataDaily />}
+      {dailyContentVisible && <PriceDataDaily />}
+      {weeklyContentVisible && <PriceDataWeekly />}
+      {monthlyContentVisible && <PriceDataMonthly />}
+
+      
 
     </Box>
   );

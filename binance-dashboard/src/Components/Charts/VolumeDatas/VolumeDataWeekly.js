@@ -5,6 +5,7 @@ import "./VolumeData.css";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // *************** Chart Data Start ***************
 
@@ -121,8 +122,9 @@ function VolumeDataWeekly() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        sx={{position:"absolute",top:"14.9rem",left:"34rem"}}
       >
-        Coins
+        Coins <KeyboardArrowDownIcon fontSize="small" sx={{marginLeft:"3rem"}}/>
       </Button>
       <Menu
         id="demo-positioned-menu"

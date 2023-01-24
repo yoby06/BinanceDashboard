@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import "./VolumeData.css";
+import "./Price.css";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
@@ -12,25 +12,25 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export const nameArray = [];
 
+
 export const options = {
   chart: {
-    title: "Daily volume chart of your coin (The given data based on most recent date)",
+    title: "Weekly price chart of your coin (The given data based on most recent date)",
     subtitle: "in United States (USD)",
-
   },
 };
 
 
 //  *************** Chart Data End  ***************
 
-function VolumeDataDaily() {
+function PriceDataWeekly() {
   const [dataX, setDataX] = useState([
-    ["Hour Intervals", " "],
-    ["1", 0],
-    ["6", 0],
-    ["12", 0],
-    ["18", 0],
-    ["24", 0],
+    ["Daily Intervals", " "],
+    ["Monday", 0],
+    ["Tuesday", 0],
+    ["wednesday", 0],
+    ["Thursday", 0],
+    ["Friday", 0],
   ]);
   const [state, setState] = useState(false);
 
@@ -45,19 +45,19 @@ function VolumeDataDaily() {
 
   async function loadChartData(apijson,name) {
     setDataX([
-        ["Hour Intervals", name],
-        ["1", parseInt(apijson[0][5])],
-        ["6", parseInt(apijson[1][5])],
-        ["12",parseInt(apijson[2][5]) ],
-        ["18", parseInt(apijson[3][5])],
-        ["24", parseInt(apijson[4][5])],
+        ["Daily Intervals", name],
+        ["Monday", parseInt(apijson[0][1])],
+        ["Tuesday", parseInt(apijson[1][1])],
+        ["Wednesday",parseInt(apijson[2][1]) ],
+        ["Thursday", parseInt(apijson[3][1])],
+        ["Friday", parseInt(apijson[4][1])],
       ])
     setState(true);
 
   }
   async function loadChart(name) {
     const api = await fetch(
-      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1d&limit=6`
+      `https://www.binance.me/api/v3/klines?symbol=${name}&interval=1w&limit=7`
     );
     let apijson = await api.json();
     console.log(apijson)
@@ -78,7 +78,7 @@ function VolumeDataDaily() {
   };
 
   const handleClose = () => {
-    setAnchorEl(null);  
+    setAnchorEl(null);
   };
 
 
@@ -108,67 +108,66 @@ function VolumeDataDaily() {
    
   }
 
-
   return (
     <>
+        
 
-
-     <Button 
+      
+        <Button
         id="demo-positioned-button"
         aria-controls={open ? "demo-positioned-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{position:"absolute",top:"14.9rem",left:"34rem"}}
+        sx={{position:"absolute",top:"14.9rem",right:"30rem"}}
       >
         Coins <KeyboardArrowDownIcon fontSize="small" sx={{marginLeft:"3rem"}}/>
       </Button>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      > 
+        {nameArray.map((item, index) => {
+          return (
+            <MenuItem
+              key={index}
+              onClick={() => {
+                handleClose();
+                loadChart(item)
+              }}
+            >
+              {" "}
+              {item}{" "}
+            </MenuItem>
+          );
+        })}
+      </Menu>
 
-        <Menu
-          id="demo-positioned-menu"
-          aria-labelledby="demo-positioned-button"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-        > 
-          {nameArray.map((item, index) => {
-            return (
-              <MenuItem
-                key={index}
-                onClick={() => {
-                  handleClose();
-                  loadChart(item)
-                }}
-              >
-                {" "}
-                {item}{" "}
-              </MenuItem>
-            );
-          })}
-        </Menu>
-        <Chart
-          className="Chart"
-          chartType="Line"
-          width="100%"
-          height="400px"
-          data={dataX}
-          options={options}
-        />
+      <Chart
+        className="Chart"
+        chartType="Line"
+        width="100%"
+        height="400px"
+        data={dataX}
+        options={options}
+      />
         
       {/********** CHART END **********/}
 
-    
 
     </>
   );
 }
 
-export default VolumeDataDaily;
+export default PriceDataWeekly;

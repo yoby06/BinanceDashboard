@@ -8,6 +8,9 @@ import MyCarousel from '../Components/Carousel/Carousel'
 import VolumeDataWeekly from '../Components/Charts/VolumeDatas/VolumeDataWeekly';
 import ShowingVolume from '../Components/ShowingVolume/ShowingVolume';
 import PieChart from '../Components/Charts/PieChart';
+import ShowingPrice from '../Components/ShowingVolume/ShowingPriceData';
+
+
 const Dashboard = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -69,16 +72,23 @@ const Dashboard = () => {
               <Box sx={{ flexGrow: 0 }}>
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
-                    <Paper sx={{marginLeft:"1rem",}}> <ShowingVolume/></Paper>
+                    <Paper sx={{marginLeft:"1.5rem",height:"63vh"}}> <ShowingVolume/>
+                    </Paper>
                   </Grid>
 
+                          {/************** BURAYI TAMAMLA FİYAT CHARTI GETİR ***************/}
                   <Grid item xs={6}>
-                    <Paper sx={{marginLeft:"1rem"}}> <ShowingVolume/> </Paper>
+                    <Paper sx={{marginRight:"1.5rem" ,height:"63vh"}}> <ShowingPrice/>  </Paper> 
                   </Grid>    
 
                   <Grid item xs={6} sx={{marginTop:"1rem"}}>
                     <Paper sx={{marginLeft:"1rem"}}> <PieChart/> </Paper>
                   </Grid>   
+
+                  <Grid item xs={6} sx={{marginTop:"1rem"}}>
+                    <Paper sx={{marginLeft:"1rem"}}>  </Paper>
+                  </Grid>   
+
                 </Grid>
               </Box>
 

@@ -6,8 +6,9 @@ import Product from './Pages/Product'
 
 
 import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
-import Page404 from './Pages/Page404'
-import Login from './Pages/Login'
+import Login from './Pages/LoginEnter'
+import Registration from './Pages/LoginRegistration'
+import Page404 from './Pages/Page404/Page404'
 const App = () => {
   return (
     <React.Fragment>
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path="blog" element={<Blog/>} />
                 <Route path="404" element={<Page404/>}/>
                 <Route path="login" element={<Login/>}/>
+                <Route path="registration" element={<Registration/>}/>
 
           </Route>
         </Routes>
