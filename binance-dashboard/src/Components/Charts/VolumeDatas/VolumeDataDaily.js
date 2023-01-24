@@ -114,7 +114,7 @@ function VolumeDataDaily() {
     <>
 
 
-<Button
+  <Button
         id="demo-positioned-button"
         aria-controls={open ? "demo-positioned-menu" : undefined}
         aria-haspopup="true"
@@ -123,46 +123,45 @@ function VolumeDataDaily() {
       >
         Coins
       </Button>
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-      > 
-        {nameArray.map((item, index) => {
-          return (
-            <MenuItem
-              key={index}
-              onClick={() => {
-                handleClose();
-                loadChart(item)
-              }}
-            >
-              {" "}
-              {item}{" "}
-            </MenuItem>
-          );
-        })}
-      </Menu>
-        
 
-      <Chart
-        className="Chart"
-        chartType="Line"
-        width="100%"
-        height="400px"
-        data={dataX}
-        options={options}
-      />
+        <Menu
+          id="demo-positioned-menu"
+          aria-labelledby="demo-positioned-button"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+        > 
+          {nameArray.map((item, index) => {
+            return (
+              <MenuItem
+                key={index}
+                onClick={() => {
+                  handleClose();
+                  loadChart(item)
+                }}
+              >
+                {" "}
+                {item}{" "}
+              </MenuItem>
+            );
+          })}
+        </Menu>
+        <Chart
+          className="Chart"
+          chartType="Line"
+          width="100%"
+          height="400px"
+          data={dataX}
+          options={options}
+        />
         
       {/********** CHART END **********/}
 

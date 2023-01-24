@@ -68,9 +68,10 @@ const Sidebar = () => {
                 <Typography sx={{marginTop:"1.5rem",color:"white"}}> 
                     From only 8.99$
                 </Typography>
-
+                  
+                <Link to="/404" style={{textDecoration:"none"}}>
                    <Button variant="contained" sx={{background:"#023e8a",marginTop:"1.5rem"}}>Upgrade To Pro</Button>
-               
+               </Link>
                 
               </Box>   
              

@@ -3,6 +3,7 @@ import Carousel from "react-elastic-carousel";
 import { Box } from "@mui/system";
 import { ListItem, Typography } from "@mui/material";
 import './carousel.css'
+import LoaderExample from "../Loader/Loader";
 
 
 
@@ -20,6 +21,7 @@ const breakPoints = [
 function MyCarousel() {
 
     const[data, setData] = useState([])
+    const[loader,setLoader] = useState(true)
     useEffect(() => {
       testfunc()
     }, [])
@@ -29,12 +31,13 @@ function MyCarousel() {
         let api = await fetch('https://www.binance.me/api/v3/ticker/price?symbols=%5B%22SOLUSDT%22,%22BTCUSDT%22,%22ETHUSDT%22,%22FILUSDT%22,%22STMXUSDT%22,%22DOGEUSDT%22,%22UNIUSDT%22,%22AVAXUSDT%22,%22XLMUSDT%22,%22MANAUSDT%22%5D')
         let apijson = await api.json()
         setData(apijson)
+        setLoader(false)
     }
     
   return (
     <>
-
-      <Box  sx={{ width:"100%",background:"white",margin:"10px"}} className="App">
+  
+     { loader ? <LoaderExample style={{width:"100%",margin:"10px"}}/> : <Box  sx={{ width:"100%",background:"white",margin:"10px"}} className="App">
                 <Carousel enableAutoPlay autoPlaySpeed={1500} breakPoints={breakPoints } >
                         {
                                 data.map((item,index) => {
@@ -56,14 +59,8 @@ function MyCarousel() {
                                     </ListItem>
                             )})
                         }
-
-
-
-
-
-
         </Carousel>
-      </Box>
+      </Box>}
     </>
   );
 }

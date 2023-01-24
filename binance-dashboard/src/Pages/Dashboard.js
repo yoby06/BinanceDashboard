@@ -67,14 +67,18 @@ const Dashboard = () => {
                 
               
               <Box sx={{ flexGrow: 0 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={8}>
+                <Grid container spacing={3}>
+                  <Grid item xs={6}>
                     <Paper sx={{marginLeft:"1rem",}}> <ShowingVolume/></Paper>
                   </Grid>
 
-                  <Grid item xs={4}>
-                    <Paper sx={{marginLeft:"1rem"}}> <PieChart/> </Paper>
+                  <Grid item xs={6}>
+                    <Paper sx={{marginLeft:"1rem"}}> <ShowingVolume/> </Paper>
                   </Grid>    
+
+                  <Grid item xs={6} sx={{marginTop:"1rem"}}>
+                    <Paper sx={{marginLeft:"1rem"}}> <PieChart/> </Paper>
+                  </Grid>   
                 </Grid>
               </Box>
 
