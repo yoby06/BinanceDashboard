@@ -7,6 +7,7 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import DescriptionIcon from '@mui/icons-material/Description';
 import "./sidebar.css";
 import { Link } from 'react-router-dom';
+import Clock from '../Clock/Clock';
 
 const Sidebar = () => {
     const buttonStyle = {marginTop:"1.5rem" , color:"white", display:"flex",flexDirection:"row",justifyContent:"left",fontSize:".0.5rem"}
@@ -20,6 +21,8 @@ const Sidebar = () => {
       <img className="logoimg" src="https://i.ibb.co/WgX6R2C/Logo.png" alt="Logo WALL@"/>
     </Box>
   </Link>
+    
+    
   
     <Box>
         <a href="https://www.linkedin.com/in/yi%C4%9Fit-o%C4%9Ful-bayarlar-0966691a3/" target="_blank" style={{textDecoration:"none"}}>

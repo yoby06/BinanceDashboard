@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Box } from "@mui/system";
 import { ListItem, Typography } from "@mui/material";
@@ -16,16 +16,24 @@ const breakPoints = [
 ];
 
 
-
-
 function MyCarousel() {
 
     const[data, setData] = useState([])
     const[loader,setLoader] = useState(true)
+    
+    
+    
+
     useEffect(() => {
-      testfunc()
+
+        testfunc();
+
+        const interval = setInterval(testfunc,3000)
+        return () => clearInterval(interval)
     }, [])
     
+
+
     
     async function testfunc(){
         let api = await fetch('https://www.binance.me/api/v3/ticker/price?symbols=%5B%22SOLUSDT%22,%22BTCUSDT%22,%22ETHUSDT%22,%22FILUSDT%22,%22STMXUSDT%22,%22DOGEUSDT%22,%22UNIUSDT%22,%22AVAXUSDT%22,%22XLMUSDT%22,%22MANAUSDT%22%5D')
@@ -34,11 +42,16 @@ function MyCarousel() {
         setLoader(false)
     }
     
+
   return (
     <>
   
      { loader ? <LoaderExample style={{width:"100%",margin:"10px"}}/> : <Box  sx={{ width:"100%",background:"white",margin:"10px"}} className="App">
-                <Carousel enableAutoPlay autoPlaySpeed={1500} breakPoints={breakPoints } >
+                <Carousel 
+                    enableAutoPlay 
+                    autoPlaySpeed={1500}
+                    breakPoints={breakPoints }
+                    >
                         {
                                 data.map((item,index) => {
                                 return(

@@ -9,6 +9,7 @@ import VolumeDataWeekly from '../Components/Charts/VolumeDatas/VolumeDataWeekly'
 import ShowingVolume from '../Components/ShowingVolume/ShowingVolume';
 import PieChart from '../Components/Charts/PieChart';
 import ShowingPrice from '../Components/ShowingVolume/ShowingPriceData';
+import Clock from '../Components/Clock/Clock';
 
 
 const Dashboard = () => {
@@ -29,9 +30,6 @@ const Dashboard = () => {
     setShow(!show);
   }
 
-
-
-  
 
   return (
       <Box className='home' sx={{display:"flex"}}>    
